@@ -1,4 +1,4 @@
-package com.monochrome;
+package com.monochrome.custom;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -11,18 +11,18 @@ import org.apache.shiro.subject.Subject;
 
 /**
  * @author monochrome
- * @date 2022/9/27
+ * @date 2022/10/7
  */
 public class ShiroRun {
     public static void main(String[] args) {
         // 1.初始化获取SecurityManager
-        IniSecurityManagerFactory factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        IniSecurityManagerFactory factory = new IniSecurityManagerFactory("classpath:custom_shiro.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         // 2.获取subject对象
         Subject subject = SecurityUtils.getSubject();
         // 3.创建token对象，web应用用户名密码从页面传递
-        UsernamePasswordToken token = new UsernamePasswordToken("zhangsan", "z3");
+        UsernamePasswordToken token = new UsernamePasswordToken("zhangsan", "z322");
         // 4.完成登录
         try {
             subject.login(token);
